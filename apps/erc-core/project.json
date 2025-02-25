@@ -90,6 +90,55 @@
         "staticFilePath": "dist/apps/erc-core/browser",
         "spa": true
       }
+    },
+    "storybook": {
+      "executor": "@storybook/angular:start-storybook",
+      "options": {
+        "port": 4400,
+        "configDir": "apps/erc-core/.storybook",
+        "browserTarget": "erc-core:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "build-storybook": {
+      "executor": "@storybook/angular:build-storybook",
+      "outputs": ["{options.outputDir}"],
+      "options": {
+        "outputDir": "dist/storybook/erc-core",
+        "configDir": "apps/erc-core/.storybook",
+        "browserTarget": "erc-core:build",
+        "compodoc": false
+      },
+      "configurations": {
+        "ci": {
+          "quiet": true
+        }
+      }
+    },
+    "test-storybook": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "test-storybook -c apps/erc-core/.storybook --url=http://localhost:4400"
+      }
+    },
+    "static-storybook": {
+      "executor": "@nx/web:file-server",
+      "dependsOn": ["build-storybook"],
+      "options": {
+        "buildTarget": "erc-core:build-storybook",
+        "staticFilePath": "dist/storybook/erc-core",
+        "spa": true
+      },
+      "configurations": {
+        "ci": {
+          "buildTarget": "erc-core:build-storybook:ci"
+        }
+      }
     }
   }
 }
