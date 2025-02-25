@@ -2,7 +2,9 @@
   "name": "@erc-monorepo/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build-storybook": "nx run erc-core:build-storybook"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~19.1.0",
@@ -42,6 +44,7 @@
     "@storybook/addon-essentials": "^8.4.6",
     "@storybook/addon-interactions": "^8.4.6",
     "@storybook/angular": "^8.4.6",
+    "@storybook/cli": "^8.6.0",
     "@storybook/core-server": "^8.4.6",
     "@storybook/jest": "^0.2.3",
     "@storybook/test-runner": "^0.19.0",
@@ -54,6 +57,7 @@
     "@types/node": "18.16.9",
     "@typescript-eslint/utils": "^8.19.0",
     "angular-eslint": "^19.0.2",
+    "chromatic": "^11.25.2",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-playwright": "^1.6.2",
